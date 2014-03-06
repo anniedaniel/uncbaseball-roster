@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+
+<div class="stats-border">
+<div class="row">
+	<div class="col-sm-1">
+	{% if player.imgurl in players %}
+		<img src="{{ player.imgurl }}" />
+	{% else %}
+		<img src="{{ player.thumbnail }}" />
+	{% endif %}
+	</div>
+	<div class="col-md-offset-2">
+		<h3>{{ player.name }}</h3>
+		<h5><strong>Number:</strong> {{ player.number }}</h5>
+		<h5><strong>Position:</strong> {{ player.position }}</h5>
+	</div>
+</div>
+	<h1>Bio</h1>
+	<hr />
+	<div class="row">
+		<div class="col-md-5">
+			<h4>Year: {{ player.year }}</h4>
+			<h4>Height: {{ player.height }}</h4>
+			<h4>Weight: {{ player.weight }}</h4>
+			<h4>Dominant Hand: {{ player.dominant_hand }}</h4>
+			<h4>High School: {{ player.high_school }}</h4>
+		</div>
+		<div class="col-md-offset-6">
+			<h4>Hometown:</h4>
+			<img src="http://api.tiles.mapbox.com/v3/anniedaniel.h6l94pb1/pin-m({{player.home_long}},{{player.home_lat}})/{{player.home_long}},{{player.home_lat}},7/350x200.png" />
+		</div>
+	</div>
+	<hr />
+		<h4>About:</h4>
+		<p>{{ player.story }}</p>
+</div>
+<div class="stats-border">
+	<h2>Stats</h2>
+	<hr />
+		<h5>Batting Average: {{ player.batting_avg }}</h5>
+		<h5>Hits: {{ player.hits }}</h5>
+		<h5>Runs: {{ player.runs }}</h5>
+		<h5>Homeruns: {{ player.homeruns }}</h5>
+		<h5>Walks: {{ player.walks }}</h5>
+		<h5>Strikeouts: {{ player.strikeouts }}</h5>
+	<hr />
+		</div>
+
+
+{% endblock %}
